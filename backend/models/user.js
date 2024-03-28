@@ -1,17 +1,28 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+// const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: [true, 'Please provide your first name'],
+        maxLength: [30, 'Name should not be longer than 30 characters'],
+        minLength: [1, 'Name must have more than 1 characters']
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'Please provide your email address'],
+        unique: true,
+        validate: [validator.isEmail, 'Please enter a valid email address']
     },
-    passwordHash: {
+    password: {
         type: String,
-        required: true,
+        required: [true, 'Please enter your password'],
+        minLength: [8, 'Your password must be longer than 6 characters'],
+        select: false
     },
     image: {
         type: String,
@@ -19,7 +30,6 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        required: true,
     },
     isAdmin: {
         type: Boolean,
@@ -33,7 +43,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    zip :{
+    zip: {
         type: String,
         default: ''
     },
@@ -44,29 +54,44 @@ const userSchema = new mongoose.Schema({
     country: {
         type: String,
         default: ''
+    },
+    resetPasswordToken: String,
+    resetPasswordExpire: Date,
+}, { timestamps: true })
+
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        next();
     }
+    this.password = await bcrypt.hash(this.password, 10);
+})
+
+userSchema.pre(["updateOne", "findByIdAndUpdate", "findOneAndUpdate"], async function (next) {
+
+    const data = this.getUpdate();
+
+    if (data.password) {
+        data.password = await bcrypt.hash(data.password, 10);
+    }
+    next()
 
 });
 
-userSchema.virtual('id').get(function () {
-    return this._id.toHexString();
-});
+userSchema.methods.getJwtToken = function () {
+    return jwt.sign({ id: this.id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_TIME
+    });
+}
 
-userSchema.set('toJSON', {
-    virtuals: true,
-});
+userSchema.methods.comparePassword = async function (inputtedPassword) {
+    return await bcrypt.compare(inputtedPassword, this.password);
+}
 
-exports.User = mongoose.model('User', userSchema);
+userSchema.methods.getResetPasswordToken = async function () {
+    const resetToken = crypto.randomBytes(20).toString('hex');
+    this.resetPasswordToken = crypto.createHash('sha256').update(resetToken).digest('hex');
+    this.resetPasswordExpire = Date.now() + 30 * 60 * 1000;
+    return resetToken;
+}
 
-
-// {   "name": "",
-//     "email": "",
-//     "passwordHash": "password",
-//     "phone": "0999992123",
-//     "isAdmin": true,
-//     "street": "champaca st",
-//     "apartment": "champaca apartment",
-//     "zip": "1630",
-//     "city": "Taguig city",
-//     "country": "Philippines",
-// }
+module.exports = mongoose.model('User', userSchema)
