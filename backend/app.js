@@ -20,9 +20,11 @@ app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
 
 const usersRoutes = require("./routes/user");
 const categoriesRoutes = require("./routes/category");
+const productsRoutes = require("./routes/product");
 
 app.use(`/api/v1/users`, usersRoutes);
 app.use(`/api/v1/categories`, categoriesRoutes);
+app.use(`/api/v1/products`, productsRoutes);
 
 module.exports = app;
 
