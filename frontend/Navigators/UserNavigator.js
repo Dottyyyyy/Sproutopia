@@ -18,14 +18,6 @@ const UserNavigator = (props) => {
         }}
       />
 
-      {/* <Stack.Screen
-        name="UserProfile"
-        component={UserProfile}
-        options={{
-          headerShown: false,
-        }}
-      /> */}
-
       <Stack.Screen
         name="Login"
         component={Login}
