@@ -2,7 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 // import Orders from "../Screens/Admin/Orders"
-import Products from "../Screens/Admin/Products"
+import Products from "../Screens/Admin/Product"
 import ProductForm from "../Screens/Admin/ProductForm"
 import Categories from "../Screens/Admin/Categories";
 
@@ -18,7 +18,7 @@ const AdminNavigator = () => {
                     title: "Products"
                 }}
             /> }
-      <Stack.Screen name="Categories" component={categories} />
+      <Stack.Screen name="Categories" component={Categories} />
       {/* <Stack.Screen name="Orders" component={Orders} />
             <Stack.Screen name="ProductForm" component={ProductForm} /> */}
     </Stack.Navigator>
