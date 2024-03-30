@@ -19,9 +19,10 @@ app.use(errorHandler);
 app.use("/public/uploads", express.static(__dirname + "/public/uploads"));
 
 const usersRoutes = require("./routes/user");
-
+const categoriesRoutes = require("./routes/category");
 
 app.use(`/api/v1/users`, usersRoutes);
+app.use(`/api/v1/categories`, categoriesRoutes);
 
 module.exports = app;
 
