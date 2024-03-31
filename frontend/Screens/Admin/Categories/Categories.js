@@ -19,15 +19,27 @@ var { width } = Dimensions.get("window")
 const Item = (props) => {
     return (
         <View style={styles.item}>
-            <Text>{props.item.name}</Text>
-            <Text>{props.item.description}</Text>
-            <EasyButton
-                danger
-                medium
-                onPress={() => props.delete(props.item._id)}
-            >
-                <Text style={{ color: "white", fontWeight: "bold" }}>Delete</Text>
-            </EasyButton>
+            <View>
+                <Text> Name: {props.item.name}</Text>
+                <Text> Location: {props.item.location}</Text>
+            </View>
+            <View style={{ flexDirection: 'row' }}>
+                <EasyButton
+                    primary
+                    medium
+                    onPress={() => props.navigation.navigate('UpdateCategories', { brandId: props.item._id })}
+                    style={{ marginRight: 10 }}
+                >
+                    <Text style={{ color: "white", fontWeight: "bold" }}> Update </Text>
+                </EasyButton>
+                <EasyButton
+                    danger
+                    medium
+                    onPress={() => props.delete(props.item._id)}
+                >
+                    <Text style={{ color: "white", fontWeight: "bold" }}> Delete </Text>
+                </EasyButton>
+            </View>
         </View>
     )
 }
@@ -99,7 +111,7 @@ return (
             <FlatList
                 data={categories}
                 renderItem={({ item, index }) => (
-                    <Item item={item} index={index} delete={deleteCategory} />
+                    <Item item={item} index={index} delete={deleteCategory} navigation={navigation} />
                 )}
                 keyExtractor={(item) => item.id}
             />
@@ -127,7 +139,7 @@ return (
             >
                 <Text style={{ color: "white", fontWeight: "bold" }}>Submit</Text>
             </EasyButton> */}
-            <Button title= "ADD" style={{ margin: 40}} onPress= {() => navigation.navigate('CreateCategory')} />
+            <Button title="ADD" onPress={() => navigation.navigate('CreateCategory')} />
         </View>
     </View>
 )
