@@ -9,9 +9,15 @@ const categorySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    icon: {
-        type: String,
-    }
+    images: [{
+        type: String
+    }],
+    // icon: {
+    //     type: String,
+    // },
+    // color: { 
+    //     type: String,
+    // },
 })
 
 

@@ -1,10 +1,10 @@
-const {Category} = require('../models/category');
+const { Category } = require('../models/category');
 
 exports.getCategory = async (req, res) => {
     const categoryList = await Category.find();
 
     if (!categoryList) {
-        req.status(500).json({success: false})
+        req.status(500).json({ success: false })
     }
     res.status(200).send(categoryList);
 }
@@ -18,20 +18,70 @@ exports.getCategoryId = async (req, res) => {
     res.status(200).send(category);;
 }
 
-exports.createCategory = async (req, res) => {
-    let category = new Category({
-        name: req.body.name,
-        description: req.body.description,
-        icon: req.body.icon,
-        color: req.body.color
+const uploadMultiple = async ({ imageFiles, request }) => {
+    const basePath = `${request.protocol}://${request.get('host')}/${path}`;
+
+    const images = imageFiles.map(image => {
+        return `${basePath}${image.filename}`
     })
 
-    category = await category.save();
+    return images
+}
 
-    if (!category)
-        return res.status(400).send('The category cant be created!')
+exports.createBrand = async (req, res) => {
 
-    res.send(category);
+    try {
+        const file = req.file;
+        const imageFiles = req.files; // Assuming req.files contains an array of additional images
+
+        if (!file && !imageFiles.length) return res.status(400).send('No images in the request');
+
+        const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
+
+        const mainImage = file ? `${basePath}${file.filename}` : null;
+
+        const images = imageFiles.map(image => {
+            return `${basePath}${image.filename}`;
+        });
+
+        let brand = new Brand({
+            name: req.body.name,
+            location: req.body.location,
+            image: mainImage,
+            images: images, // Assuming there's a field in Brand model to store multiple images
+            // icon: req.body.icon,
+            // color: req.body.color
+        });
+
+        brand = await brand.save();
+
+        if (!brand)
+            return res.status(400).send('the brand cannot be created!')
+
+        res.send(brand);
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+        console.log(error)
+    }
+
+    // try {
+
+    //     req.body.images = await ImageFile.uploadMultiple({
+    //         imageFiles: req.files,
+    //         request: req
+    //     })
+
+    //     const brand = await Brand.create(req.body);
+
+    //     return res.status(200).json({
+    //         success: true,
+    //         message: 'Category successfully added',
+    //         brand: brand,
+    //     })
+
+    // } catch (err) {
+    //     errorHandler({ error: err, response: res })
+    // }
 }
 
 exports.deleteCategory = async (req, res) => {

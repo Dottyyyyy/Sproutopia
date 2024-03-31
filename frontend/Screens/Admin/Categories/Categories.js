@@ -5,10 +5,11 @@ import {
     FlatList,
     Dimensions,
     TextInput,
-    StyleSheet
+    StyleSheet,
+    Button
 } from "react-native"
-import EasyButton from "../../Shared/StyledComponents/EasyButton"
-import baseURL from "../../assets/common/baseUrl";
+import EasyButton from "../../../Shared/StyledComponents/EasyButton"
+import baseURL from "../../../assets/common/baseUrl";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage'
 // import { add } from "react-native-reanimated";
@@ -31,7 +32,7 @@ const Item = (props) => {
     )
 }
 
-const Categories = (props) => {
+const Categories = ({ navigation }) => {
 
     const [categories, setCategories] = useState([]);
     const [categoryName, setCategoryName] = useState();
@@ -105,7 +106,7 @@ return (
         </View>
         <View style={styles.bottomBar}>
 
-            <Text>Name</Text>
+            {/*<Text>Name</Text>
             <TextInput
                 value={categoryName}
                 style={styles.input}
@@ -125,7 +126,8 @@ return (
                 onPress={() => addCategory()}
             >
                 <Text style={{ color: "white", fontWeight: "bold" }}>Submit</Text>
-            </EasyButton>
+            </EasyButton> */}
+            <Button title= "ADD" style={{ margin: 40}} onPress= {() => navigation.navigate('CreateCategory')} />
         </View>
     </View>
 )
