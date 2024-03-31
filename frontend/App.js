@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Main from './Nav/Main';
-import Home from './Nav/Home'; 
+// import Home from './Nav/Home'; 
+import Header from './Shared/Header';
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, extendTheme, } from "native-base";
-import ProductContainer from './Screens/Product/ProductContainer';
+// import ProductContainer from './Screens/Product/ProductContainer';
+import DrawerNavigator from './Nav/DrawerNav';
 import { Provider } from "react-redux";
 import store from "./Redux/store";
 
