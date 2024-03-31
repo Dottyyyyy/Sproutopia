@@ -10,6 +10,7 @@ import axios from 'axios';
 import baseURL from "../../assets/common/baseUrl";
 import Toast from 'react-native-toast-message';
 import { authenticate, getToken, getUser } from '../../utils/user';
+import SyncStorage from "sync-storage";
 
 const Login = ({ navigation }) => {
 //   const navigation = useNavigation();
@@ -29,8 +30,12 @@ const Login = ({ navigation }) => {
             text1: data.message,
         });
 
-        authenticate(data)
+        // authenticate(data)
         // setLoader(false)
+        console.log(data)
+
+        SyncStorage.set("jwt", data.token);
+        SyncStorage.set("user", JSON.stringify(data.user))
 
         navigation.navigate('UserProfile');
 

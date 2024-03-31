@@ -42,7 +42,7 @@ const Main = () => {
           },
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Admin"
         component={AdminNavigator}
         options={{
@@ -57,7 +57,7 @@ const Main = () => {
             );
           },
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Cart"

@@ -24,7 +24,6 @@ import Main from "./Main";
 import Products from "../Screens/Admin/Product/Product";
 import AdminNavigator from "./AdminNav";
 import ProductList from "../Screens/Product/ProductList";
-global.__reanimatedWorkletInit = () => { };
 const Drawer = createDrawerNavigator();
 
 
@@ -95,7 +94,7 @@ function CustomDrawerContent(props) {
               </Pressable>
             ))}
           </VStack>
-          <VStack space="5">
+          {/* <VStack space="5">
             <Text fontWeight="500" fontSize="14" px="5" color="gray.500">
               Labels
             </Text>
@@ -137,7 +136,7 @@ function CustomDrawerContent(props) {
                 </HStack>
               </Pressable>
             </VStack>
-          </VStack>
+          </VStack> */}
         </VStack>
       </VStack>
     </DrawerContentScrollView>
@@ -158,9 +157,9 @@ const DrawerNavigator = () => {
           component={Main}
         />
         <Drawer.Screen name="Products" component={Main} initialParams={{ screen: 'Products' }} />
-        <Drawer.Screen name="Login" component={Main} initialParams={{ screen: 'User' }} />
+        {/* <Drawer.Screen name="Login" component={Main} initialParams={{ screen: 'User' }} /> */}
         {/* <Drawer.Screen name="Cart" component={Main} initialParams={{ screen: 'Cart' }} /> */}
-        <Drawer.Screen name="Product List" component={Main}  initialParams={{ screen: 'Admin' }}/>
+        <Drawer.Screen name="Product List" component={AdminNavigator}  initialParams={{ screen: 'Admin' }}/>
 
       </Drawer.Navigator>
     </Box>
