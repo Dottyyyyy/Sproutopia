@@ -12,13 +12,13 @@ import { Input, VStack, Heading, Box } from "native-base";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { useFocusEffect } from "@react-navigation/native";
 import { Searchbar } from "react-native-paper";
-import ListItem from "./ListItem";
+import ListItem from "./Product/ListItem";
 
 import axios from "axios";
-import baseURL from "../../../assets/common/baseUrl";
+import baseURL from "../../assets/common/baseUrl";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 var { height, width } = Dimensions.get("window");
-import EasyButton from "../../../Shared/StyledComponents/EasyButton";
+import EasyButton from "../../Shared/StyledComponents/EasyButton";
 import { useNavigation } from "@react-navigation/native";
 const Products = (props) => {
   const [productList, setProductList] = useState([]);
@@ -30,11 +30,7 @@ const Products = (props) => {
   const ListHeader = () => {
     return (
       <View elevation={1} style={styles.listHeader}>
-        {/* <View style={styles.headerItem}></View> */}
-        <View style={styles.headerItem}>
-          {/* <Text style={{ fontWeight: "600" }}>Name</Text> */}
-          <Text style={{ fontWeight: "600" }}>Images</Text>
-        </View>
+        <View style={styles.headerItem}></View>
         <View style={styles.headerItem}>
           <Text style={{ fontWeight: "600" }}>Name</Text>
         </View>
@@ -45,7 +41,7 @@ const Products = (props) => {
           <Text style={{ fontWeight: "600" }}>Price</Text>
         </View>
         <View style={styles.headerItem}>
-          <Text style={{ fontWeight: "600" }}>Stock</Text>
+          <Text style={{ fontWeight: "600" }}>Desc.</Text>
         </View>
       </View>
     );
@@ -93,7 +89,7 @@ const Products = (props) => {
           setToken(res);
         })
         .catch((error) => console.log(error));
-      axios.get(`${baseURL}/products/`).then((res) => {
+      axios.get(`${baseURL}/products`).then((res) => {
         console.log(res.data);
         setProductList(res.data);
         setProductFilter(res.data);
@@ -121,15 +117,7 @@ const Products = (props) => {
         <EasyButton
           secondary
           medium
-          onPress={() => navigation.navigate("UserList")}
-        >
-          <Icon name="shopping-bag" size={18} color="white" />
-          <Text style={styles.buttonText}>Users</Text>
-        </EasyButton>
-        <EasyButton
-          secondary
-          medium
-          onPress={() => navigation.navigate("ProductList")}
+          onPress={() => navigation.navigate("ProductForm")}
         >
           <Icon name="plus" size={18} color="white" />
           <Text style={styles.buttonText}>Products</Text>
@@ -190,13 +178,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   buttonContainer: {
-    height: height,
-    width: width,
-    flex: 1,
-    alignItems: "center",
+    margin: 20,
+    alignSelf: "center",
     flexDirection: "row",
-    marginLeft: 30,
-    flexWrap: "wrap",
   },
   buttonText: {
     marginLeft: 4,

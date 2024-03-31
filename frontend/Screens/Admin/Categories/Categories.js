@@ -12,6 +12,7 @@ import EasyButton from "../../../Shared/StyledComponents/EasyButton"
 import baseURL from "../../../assets/common/baseUrl";
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { Center } from "native-base";
 // import { add } from "react-native-reanimated";
 
 var { width } = Dimensions.get("window")
@@ -68,26 +69,26 @@ const Categories = ({ navigation }) => {
             setToken();
         }
     }, [])
-    const addCategory = () => {
-        const category = {
-            name: categoryName,
-            description: categoryDescription
-        };
+    // const addCategory = () => {
+    //     const category = {
+    //         name: categoryName,
+    //         description: categoryDescription
+    //     };
 
-        const config = {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        };
+    //     const config = {
+    //         headers: {
+    //             Authorization: `Bearer ${token}`,
+    //         }
+    //     };
 
-        axios
-            .post(`${baseURL}/categories/create`, category, config)
-            .then((res) => setCategories([...categories, res.data]))
-            .catch((error) => alert("Error loading"));
+    //     axios
+    //         .post(`${baseURL}/categories/create`, category, config)
+    //         .then((res) => setCategories([...categories, res.data]))
+    //         .catch((error) => alert("Error loading"));
 
-        setCategoryName("")
-        setCategoryDescription("");
-    }
+    //     setCategoryName("")
+    //     setCategoryDescription("");
+    // }
 
     const deleteCategory = (id) => {
         const config = {
@@ -147,16 +148,17 @@ return (
 
 const styles = StyleSheet.create({
 bottomBar: {
-    backgroundColor: "white",
-    width: width,
-    height: 60,
+    // backgroundColor: "white",
+    width: 2000,
+    height: 120,
     padding: 2,
+    marginLeft: 15,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     position: "absolute",
     bottom: 0,
-    left: 0
+    left: 150
 },
 input: {
     height: 40,

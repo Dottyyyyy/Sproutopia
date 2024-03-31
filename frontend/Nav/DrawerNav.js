@@ -21,11 +21,12 @@ import ProductContainer from "../Screens/Product/ProductContainer";
 import Login from "../Screens/User/Login";
 import Main from "./Main";
 // import Cart from "../Screens/Cart/Cart";
-// import Products from "../Screens/Admin/Products";
+import Products from "../Screens/Admin/Product/Product";
 import AdminNavigator from "./AdminNav";
 import ProductList from "../Screens/Product/ProductList";
 global.__reanimatedWorkletInit = () => { };
 const Drawer = createDrawerNavigator();
+
 
 const getIcon = (screenName) => {
   switch (screenName) {
