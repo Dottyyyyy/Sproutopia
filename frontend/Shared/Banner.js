@@ -9,9 +9,9 @@ const Banner = () => {
 
     useEffect(() => {
         setBannerData([
-            "https://images.vexels.com/media/users/3/126443/preview2/ff9af1e1edfa2c4a46c43b0c2040ce52-macbook-pro-touch-bar-banner.jpg",
-            "https://pbs.twimg.com/media/D7P_yLdX4AAvJWO.jpg",
-            "https://www.yardproduct.com/blog/wp-content/uploads/2016/01/gardening-banner.jpg",
+            "https://i.pinimg.com/564x/fc/d2/48/fcd248b00ccbc9eb077a1c86f20b1544.jpg",
+            "https://i.pinimg.com/564x/13/a8/46/13a8462b2b0d79e21e2715c1c849fd89.jpg",
+            "https://i.pinimg.com/564x/80/05/19/8005199ef38d298ccda54a8a119fc146.jpg",
         ]);
 
         return () => {
@@ -27,7 +27,7 @@ const Banner = () => {
                         style={{ height: width / 2 }}
                         showButtons={false}
                         autoplay={true}
-                        autoplayTimeout={2}
+                        autoplayTimeout={5}
                     >
                         {bannerData.map((item) => {
                             return (
