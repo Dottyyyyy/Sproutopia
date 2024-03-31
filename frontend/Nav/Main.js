@@ -4,11 +4,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeNavigator from "./Home";
 import UserNavigator from "./UserNav";
 import AdminNavigator from "./AdminNav";
+import CartNavigator from "./CartNav";
+import Cart from "../Screens/Cart/Cart";
 
 import Register from "../Screens/User/Register";
 import { View, Text, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
+import CartIcon from "../Shared/CartIcon";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -51,6 +54,26 @@ const Main = () => {
                 color={color}
                 size={30}
               />
+            );
+          },
+        }}
+      />
+
+      <Tab.Screen
+        name="Cart"
+        component={CartNavigator}
+        options={{
+          tabBarIcon: ({ color }) => {
+            return (
+              <>
+                <Icon
+                  name="shopping-cart"
+                  style={{ position: "relative" }}
+                  color={color}
+                  size={30}
+                />
+                <CartIcon />
+              </>
             );
           },
         }}

@@ -7,7 +7,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, extendTheme, } from "native-base";
 // import ProductContainer from './Screens/Product/ProductContainer';
 // import DrawerNavigation from './Navigators/DrawerNavigator';
-import DrawerNavigator from './Nav/DrawerNavigator';
+import DrawerNavigator from './Nav/DrawerNav';
+import Auth from './Context/Store/Auth';
 
 import { Provider } from "react-redux";
 import store from "./Redux/store";
@@ -23,7 +24,7 @@ const newColorTheme = {
 
 export default function App() {
   return (
-
+    <Auth>
     <Provider store={store}>
         <NativeBaseProvider theme={theme}>
           <NavigationContainer>
@@ -35,6 +36,7 @@ export default function App() {
           </NavigationContainer>
         </NativeBaseProvider>
       </Provider>
+      </Auth>
   );
 }
 
