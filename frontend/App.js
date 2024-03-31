@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Main from './Navigators/Main';
-import Home from './Navigators/Home';
+import Main from './Nav/Main';
+import Home from './Nav/Home'; 
 import { NavigationContainer } from '@react-navigation/native';
 import { NativeBaseProvider, extendTheme, } from "native-base";
 import ProductContainer from './Screens/Product/ProductContainer';

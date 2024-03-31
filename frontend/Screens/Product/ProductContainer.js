@@ -5,7 +5,7 @@ import { Ionicons, SmallCloseIcon } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import ProductList from "./ProductList";
 import SearchedProduct from "./SearchedProduct";
-import Banner from "../../Shared/Form/Banner";
+import Banner from "../../Shared/Banner";
 import CategoryFilter from "./CategoryFilter";
 import axios from 'axios'
 
