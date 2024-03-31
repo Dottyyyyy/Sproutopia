@@ -60,6 +60,7 @@ const UpdateBrands = ({ route, navigation }) => {
         });
 
         if (!result.cancelled) {
+            // Update images state with the file URI
             setImages(prevImages => [...prevImages, result.uri]);
         }
     };

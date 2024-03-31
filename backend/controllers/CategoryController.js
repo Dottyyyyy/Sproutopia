@@ -33,7 +33,7 @@ exports.createBrand = async (req, res) => {
     try {
         const file = req.file;
         const imageFiles = req.files; // Assuming req.files contains an array of additional images
-
+        
         if (!file && !imageFiles.length) return res.status(400).send('No images in the request');
 
         const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
@@ -44,7 +44,7 @@ exports.createBrand = async (req, res) => {
             return `${basePath}${image.filename}`;
         });
 
-        let brand = new Brand({
+        let category = new Category({
             name: req.body.name,
             location: req.body.location,
             image: mainImage,
@@ -53,12 +53,12 @@ exports.createBrand = async (req, res) => {
             // color: req.body.color
         });
 
-        brand = await brand.save();
+        category = await category.save();
 
-        if (!brand)
+        if (!category)
             return res.status(400).send('the brand cannot be created!')
 
-        res.send(brand);
+        res.send(category);
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
         console.log(error)
@@ -71,12 +71,12 @@ exports.createBrand = async (req, res) => {
     //         request: req
     //     })
 
-    //     const brand = await Brand.create(req.body);
+    //     const category= await Brand.create(req.body);
 
     //     return res.status(200).json({
     //         success: true,
     //         message: 'Category successfully added',
-    //         brand: brand,
+    //         category: category,
     //     })
 
     // } catch (err) {
@@ -99,12 +99,12 @@ exports.deleteCategory = async (req, res) => {
 
 // exports.updateCategory = async (req, res, next) => {
 //     try {
-//         let brands = await Brand.findById(req.params.id);
+//         let categories = await category.findById(req.params.id);
 
-//         if (!brands) {
+//         if (!categories) {
 //             return res.status(404).json({
 //                 success: false,
-//                 message: 'Brand not found'
+//                 message: 'category not found'
 //             });
 //         }
 
@@ -142,41 +142,36 @@ exports.deleteCategory = async (req, res) => {
 // };
 exports.updateCategory = async (req, res) => {
     try {
-        const brandId = req.params.id; // Assuming brand ID is passed as a parameter
+        const categoryId = req.params.id;
 
-        // Check if brandId is provided
-        if (!brandId) return res.status(400).send('Brand ID is required');
+        // Check if categoryId is provided
+        if (!categoryId) return res.status(400).send('Category ID is required');
 
-        // Find the brand by ID
-        let brand = await Brand.findById(brandId);
+        // Find the category by ID
+        let category = await Category.findById(categoryId);
 
-        // If brand doesn't exist, return 404
-        if (!brand) return res.status(404).send('Brand not found');
+        // If category doesn't exist, return 404
+        if (!category) return res.status(404).send('Category not found');
 
         // Update brand properties
-        if (req.body.name) brand.name = req.body.name;
-        if (req.body.location) brand.location = req.body.location;
+        if (req.body.name) cateogry.name = req.body.name;
+        if (req.body.location) category.location = req.body.location;
 
-        // Handle image updates
-        if (req.file) {
-            const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
-            brand.image = `${basePath}${req.file.filename}`;
-        }
-
+        /// Handle image updates if any images are provided in the request
         if (req.files && req.files.length > 0) {
             const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
             const images = req.files.map(image => `${basePath}${image.filename}`);
-            brand.images = images;
+            category.images = images;
         }
 
-        // Save the updated brand
-        brand = await brand.save();
+        // Save the updated category
+        category = await category.save();
 
-        // If brand couldn't be updated, return an error
-        if (!brand) return res.status(400).send('The brand could not be updated');
+        // If category couldn't be updated, return an error
+        if (!category) return res.status(400).send('The category could not be updated');
 
-        // Respond with the updated brand
-        res.send(brand);
+        // Respond with the updated category
+        res.send(category);
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
         console.log(error);
