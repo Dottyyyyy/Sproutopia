@@ -34,17 +34,20 @@ exports.createProduct = async (req, res) => {
         const category = await Category.findById(req.body.category);
         if (!category) return res.status(400).send('Invalid Category');
 
-        const file = req.file;
-        if (!file) return res.status(400).send('No image in the request');
+        const files = req.files; // Assuming req.files contains an array of image files
+        if (!files || files.length === 0) return res.status(400).send('No images in the request');
 
-        const fileName = file.filename;
         const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
+
+        const images = files.map(file => {
+            return `${basePath}${file.filename}`;
+        });
 
         let product = new Product({
             name: req.body.name,
             description: req.body.description,
             richDescription: req.body.richDescription,
-            image: `${basePath}${fileName}`,
+            images: images, // Store array of image URLs
             category: req.body.category,
             price: req.body.price,
             countInStock: req.body.countInStock,
@@ -76,12 +79,20 @@ exports.updateProduct = async (req, res) => {
         const product = await Product.findById(id);
         if (!product) return res.status(400).send('Invalid Product!');
 
-        let imagepath = product.image; // Default to existing image path
-        const file = req.file;
-        if (file) {
-            const fileName = file.filename;
+        let imagePaths = product.images; // Default to existing image paths
+
+        if (req.file) {
+            // If there's a single file uploaded, update the image path
+            const fileName = req.file.filename;
             const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
-            imagepath = `${basePath}${fileName}`;
+            imagePaths = `${basePath}${fileName}`;
+        }
+
+        if (req.files && req.files.length > 0) {
+            // If there are multiple files uploaded, update the image paths array
+            const basePath = `${req.protocol}://${req.get('host')}/public/uploads/`;
+            const newImages = req.files.map(image => `${basePath}${image.filename}`);
+            imagePaths = newImages;
         }
 
         const updatedProduct = await Product.findByIdAndUpdate(
@@ -90,7 +101,7 @@ exports.updateProduct = async (req, res) => {
                 name: req.body.name,
                 description: req.body.description,
                 richDescription: req.body.richDescription,
-                image: imagepath,
+                images: imagePaths,
                 category: req.body.category,
                 price: req.body.price,
                 countInStock: req.body.countInStock,

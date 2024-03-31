@@ -7,18 +7,31 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
+    <View style={styles.container}>
       <Stack.Navigator>
         <Stack.Screen
-              name='Home'
-              component={ProductContainer}
-              options={{
-                  headerShown: false,
-              }}
-          />
-         </Stack.Navigator>
-  )
-}
-
-export default function Home() {
-  return <MyStack />;
-}
+          name='Product Container'
+          component={ProductContainer}
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack.Navigator>
+    </View>
+  );
+};
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+  },
+  text: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  // Add more styles as needed
+});
+export default Home;
