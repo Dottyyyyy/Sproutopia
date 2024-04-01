@@ -8,7 +8,7 @@ import UpdateProductForm from "../Screens/Admin/Product/UpdateProduct"
 import Categories from "../Screens/Admin/Category/Categories";
 import CreateCategory from "../Screens/Admin/Category/CreateCategories"
 import UpdateCategories from "../Screens/Admin/Category/UpdateCategories"
-import adminOrderList from "../Screens/Admin/Order/OrderList"
+import adminOrderList from "../Screens/Order/OrderList"
 import ProductList from "../Screens/Admin/Product/ProductList"
 
 const Stack = createStackNavigator();

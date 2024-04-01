@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import axios from "axios";
-import baseURL from "../../../assets/common/baseUrl"
+import baseURL from "../assets/common/baseUrl"
 import SyncStorage from "sync-storage";
 import { useNavigation } from "@react-navigation/native";
 
