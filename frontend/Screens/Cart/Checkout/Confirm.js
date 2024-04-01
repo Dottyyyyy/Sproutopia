@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Dimensions, ScrollView, Button } from "react-native";
 import { Text, HStack, VStack, Avatar, Spacer, Center } from "native-base";
 
-import { clearCart } from "../../../Redux/Actions/CartActions";
+import { clearCart } from "../../../Redux/Actions/cartActions";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Toast from "react-native-toast-message";
 import axios from "axios";
