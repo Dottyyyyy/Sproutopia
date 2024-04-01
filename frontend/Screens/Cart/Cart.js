@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { removeFromCart, clearCart } from '../../Redux/Actions/CartActions'
+import { removeFromCart, clearCart } from '../../Redux/Actions/cartActions'
 // var { height, width } = Dimensions.get("window");
 import EasyButton from "../../Shared/StyledComponents/EasyButton"
 import AuthGlobal from "../../Context/Store/AuthGlobal"
