@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, Image, StyleSheet, TouchableOpacity, Ale
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import SyncStorage from "sync-storage";
 import baseURL from "../../assets/common/baseUrl"
 import { useNavigation } from '@react-navigation/native';
 
@@ -19,7 +20,7 @@ const UpdateProfile = () => {
 
     const getProfile = async () => {
         setLoading(true);
-        const token = await AsyncStorage.getItem('jwt');
+        const token = await SyncStorage.get('jwt');
         if (!token) {
             setIsAuthenticated(false);
             navigation.navigate('Login');
@@ -46,7 +47,7 @@ const UpdateProfile = () => {
     };
 
     const updateProfile = async (formData) => {
-        const token = await AsyncStorage.getItem('jwt');
+        const token = await SyncStorage.get('jwt');
         try {
             const response = await axios.put(`${baseURL}/users/profile/update`, formData, {
                 headers: {

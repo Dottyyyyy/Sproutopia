@@ -116,7 +116,7 @@ const Products = (props) => {
           onPress={() => navigation.navigate("Orders")}
         >
           <Icon name="shopping-bag" size={18} color="white" />
-          <Text style={styles.buttonText}>Orders</Text>
+          <Text style={styles.buttonText}>adminOrderList</Text>
         </EasyButton>
         <EasyButton
           secondary

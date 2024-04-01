@@ -39,17 +39,11 @@ const UserNavigator = (props) => {
       <Stack.Screen
         name="UpdateProfile"
         component={UpdateProfile}
-        options={{
-          headerShown: false,
-        }}
       />
 
       <Stack.Screen
         name="OrderList"
         component={OrderList}
-        options={{
-          headerShown: false,
-        }}
       />
     </Stack.Navigator>
   );
