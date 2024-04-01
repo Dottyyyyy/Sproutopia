@@ -4,7 +4,7 @@ import {
     CLEAR_CART,
     INCREMENT_ITEM_QUANTITY,
     DECREMENT_ITEM_QUANTITY,
-  } from '../Redux/Constants/CartConstants';
+  } from '../Constants/CartConstants';
   
   export const addToCart = (payload) => {
     return {
