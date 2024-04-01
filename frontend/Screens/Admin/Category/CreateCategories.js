@@ -24,7 +24,7 @@ import { FontAwesome } from '@expo/vector-icons';
 var { width } = Dimensions.get("window")
 
 
-const CreateCategory = (navigation) => {
+const CreateCategories = (navigation) => {
 
     const [brands, setBrands] = useState([]);
     const [brandName, setBrandName] = useState();
