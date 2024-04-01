@@ -10,7 +10,10 @@ import CreateCategory from "../Screens/Admin/Category/CreateCategories"
 import UpdateCategories from "../Screens/Admin/Category/UpdateCategories"
 import adminOrderList from "../Screens/Order/OrderList"
 import ProductList from "../Screens/Admin/Product/ProductList"
-
+import AdminCharts from "../Screens/Admin/Charts/AdminCharts"
+import BarGraph from "../Screens/Admin/Charts/BarChart";
+import PieGraph from "../Screens/Admin/Charts/PieChart";
+import LineGraph from "../Screens/Admin/Charts/LineGraph";
 const Stack = createStackNavigator();
 
 const AdminNavigator = () => {
@@ -31,6 +34,10 @@ const AdminNavigator = () => {
       <Stack.Screen name="UpdateProductForm" component={UpdateProductForm} />
       <Stack.Screen name="ProductList" component={ProductList} />
       <Stack.Screen name="adminOrderList" component={adminOrderList} />
+      <Stack.Screen name="AdminCharts" component={AdminCharts}/>
+      <Stack.Screen name="BarCharts" component={BarGraph} options={{ title: "Sales Per User" }}/>
+      <Stack.Screen name="PieCharts" component={PieGraph} options={{ title: "Most Ordered Product" }}/>
+      <Stack.Screen name="LineGraph" component={LineGraph} options={{ title: "Sales Per Month" }}/>
     </Stack.Navigator>
   );
 };
