@@ -5,9 +5,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Products from "../Screens/Admin/Products"
 import ProductForm from "../Screens/Admin/Product/ProductForm"
 import UpdateProductForm from "../Screens/Admin/Product/UpdateProduct"
-import Categories from "../Screens/Admin/Categories/Categories";
-import CreateCategory from "../Screens/Admin/Categories/CreateCategories"
-import UpdateCategories from "../Screens/Admin/Categories/UpdateCategories"
+import Categories from "../Screens/Admin/Category/Categories";
+import CreateCategory from "../Screens/Admin/Category/CreateCategories"
+import UpdateCategories from "../Screens/Admin/Category/UpdateCategories"
 import ProductList from "../Screens/Admin/Product/ProductList"
 
 const Stack = createStackNavigator();
