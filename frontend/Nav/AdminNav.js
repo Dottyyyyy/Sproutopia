@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 // import Orders from "../Screens/Admin/Orders"
 import Products from "../Screens/Admin/Products"
 import ProductForm from "../Screens/Admin/Product/ProductForm"
-import UpdateProductForm from "../Screens/Admin/Product/ProductUpdate"
+import UpdateProductForm from "../Screens/Admin/Product/UpdateProduct"
 import Categories from "../Screens/Admin/Categories/Categories";
 import CreateCategory from "../Screens/Admin/Categories/CreateCategories"
 import UpdateCategories from "../Screens/Admin/Categories/UpdateCategories"
