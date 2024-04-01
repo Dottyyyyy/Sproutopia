@@ -11,7 +11,7 @@ import Register from "../Screens/User/Register";
 import { View, Text, TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/FontAwesome";
-import CartIcon from "../Shared/CartIcon";
+import CartIcon from "../Shared/StyledComponents/CartIcon";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
