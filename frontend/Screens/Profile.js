@@ -43,7 +43,7 @@ const UserProfile = ({ navigation }) => {
 
     const handleLogout = async () => {
         try {
-            await AsyncStorage.removeItem('jwt');
+            await SyncStorage.removeItem('jwt');
             setIsAuthenticated(false);
             navigation.navigate('Login');
         } catch (error) {
