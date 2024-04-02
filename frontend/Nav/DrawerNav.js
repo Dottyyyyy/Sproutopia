@@ -1,6 +1,9 @@
 import * as React from "react";
 
-import {createDrawerNavigator, DrawerContentScrollView} from "@react-navigation/drawer";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+} from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import {
   NativeBaseProvider,
@@ -24,6 +27,7 @@ import Main from "./Main";
 import Products from "../Screens/Admin/Product/Product";
 import AdminNavigator from "./AdminNav";
 import ProductList from "../Screens/Product/ProductList";
+import { useDispatch, useSelector } from "react-redux";
 const Drawer = createDrawerNavigator();
 
 
@@ -143,6 +147,9 @@ function CustomDrawerContent(props) {
   );
 }
 const DrawerNavigator = () => {
+  const { userInfo } = useSelector((state) => state.user);
+
+  console.log(userInfo)
   return (
     <Box safeArea flex={1}>
       <Drawer.Navigator
@@ -151,18 +158,26 @@ const DrawerNavigator = () => {
         <Drawer.Screen
           name="Home"
           options={{
-            drawerLabel: 'Home',
-            title: 'Home Screen',
+            drawerLabel: "Home",
+            title: "Home Screen",
           }}
           component={Main}
         />
-        <Drawer.Screen name="Products" component={Main} initialParams={{ screen: 'Products' }} />
+                <Drawer.Screen
+          name="Products"
+          component={Main}
+          initialParams={{ screen: "Products" }}
+        />
         {/* <Drawer.Screen name="Login" component={Main} initialParams={{ screen: 'User' }} /> */}
         {/* <Drawer.Screen name="Cart" component={Main} initialParams={{ screen: 'Cart' }} /> */}
-        <Drawer.Screen name="Product List" component={AdminNavigator}  initialParams={{ screen: 'Admin' }}/>
+        <Drawer.Screen
+              name="Product List"
+              component={AdminNavigator}
+              initialParams={{ screen: "Admin" }}
+            />
 
       </Drawer.Navigator>
     </Box>
   );
-}
-export default DrawerNavigator
+};
+export default DrawerNavigator;

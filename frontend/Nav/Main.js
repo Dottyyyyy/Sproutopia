@@ -42,22 +42,20 @@ const Main = () => {
           },
         }}
       />
-      <Tab.Screen
-        name="Admin"
-        component={AdminNavigator}
-        options={{
-          tabBarIcon: ({ color }) => {
-            return (
-              <Icon
-                name="cog"
-                style={{ position: "relative" }}
-                color={color}
-                size={30}
-              />
-            );
-          },
-        }}
-      />
+            {/* <Tab.Screen
+                name="Admin"
+                component={AdminNavigator}
+                options={{
+                    tabBarIcon: ({color}) => {
+                        return <Icon
+                            name="cog"
+                            style={{position: "relative"}}
+                            color={color}
+                            size={30}
+                        />
+                    }
+                }}
+            /> */}
 
       <Tab.Screen
         name="Cart"
