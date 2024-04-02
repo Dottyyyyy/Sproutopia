@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as userAction from '../Constants'
+import * as userAction from '../Constants/CartConstants'
 import baseURL from "../../assets/common/baseUrl";
 import SyncStorage from "sync-storage";
 

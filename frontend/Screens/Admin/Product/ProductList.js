@@ -11,7 +11,6 @@ import {
 import EasyButton from "../../../Shared/StyledComponents/EasyButton"
 import baseURL from "../../../assets/common/baseUrl";
 import axios from "axios";
-import baseURL from "../../../assets/common/baseUrl";
 import SyncStorage from "sync-storage";
 import { useNavigation } from "@react-navigation/native";
 

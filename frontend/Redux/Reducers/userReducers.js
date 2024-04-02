@@ -1,4 +1,4 @@
-import * as userAction from '../Redux/Constants/CartConstants'
+import * as userAction from '../Constants/CartConstants'
 
 export const userReducer = (state = {}, action) => {
     switch (action.type) {
