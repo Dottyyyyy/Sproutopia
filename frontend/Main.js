@@ -6,7 +6,7 @@ import Mains from './Nav/Main';
 
 import SyncStorage from 'sync-storage'
 import { Button } from 'native-base';
-import { USER_LOGIN_SUCCESS } from './Redux/constants';
+import { USER_LOGIN_SUCCESS } from './Redux/Constants/CartConstants';
 
 export default function Main() {
 
