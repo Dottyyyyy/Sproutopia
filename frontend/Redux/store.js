@@ -1,8 +1,8 @@
 import { legacy_createStore as createStore, combineReducers, applyMiddleware } from 'redux';
-import { userReducer } from './Reducers/userReducer';
+import { userReducer } from './Reducers/userReducers';
 
 import { getUser, getToken } from '../utils/user';
-import cartItems from './Reducers/cartItems';
+import cartItems from './Reducers/CartReducers';
 
 
 const reducers = combineReducers({

@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import DrawerNavigator from './Navigators/DrawerNavigator';
+import DrawerNavigator from './Navigators/DrawerNav';
 import Mains from './Navigators/Main';
 
 import SyncStorage from 'sync-storage'
