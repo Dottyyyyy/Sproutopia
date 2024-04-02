@@ -7,7 +7,6 @@ const authJwt = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handler');
 require("dotenv/config");
 
-
 app.use(cors());
 app.options("*", cors());
 

@@ -28,7 +28,7 @@ exports.getCategoryId = async (req, res) => {
 //     return images
 // }
 
-exports.createBrand = async (req, res) => {
+exports.createCategory = async (req, res) => {
 
     try {
         const file = req.file;
