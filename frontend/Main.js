@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import DrawerNavigator from './Navigators/DrawerNav';
-import Mains from './Navigators/Main';
+import DrawerNavigator from './Nav/DrawerNav';
+import Mains from './Nav/Main';
 
 import SyncStorage from 'sync-storage'
 import { Button } from 'native-base';
